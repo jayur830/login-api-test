@@ -24,6 +24,12 @@
 
     <!-- NAVER Login -->
     <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+
+    <!-- Facebook Login -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v7.0&appId=763266397775448&autoLogAppEvents=1" nonce="x68pPYFF"></script>
+
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js?onload=init" async defer></script>
 </head>
 <body>
     <!-- Kakao Login -->
@@ -37,8 +43,23 @@
     <!-- NAVER Login -->
     <div id="naverIdLogin"></div>
 
+    <!-- Facebook Login -->
+    <div class="fb-login-button"
+         data-size="large"
+         data-button-type="login_with"
+         data-layout="default"
+         data-auto-logout-link="false"
+         data-use-continue-as="false"
+         data-width="250"></div>
+
+    <!-- reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6Le46LEZAAAAAM-dtGNGiQKA6HR-DJyDl3KTue6x"></div>
+
     <script>
+        // Kakao JavaScript SDK Initialization
         Kakao.init("1c3115b6d9e55307b98cca908fa183ec");
+
+        // NAVER JavaScript SDK Initialization
         new naver.LoginWithNaverId({
             clientId: "nGPht0bboCyg0zTVBTx4",
             callbackUrl: "${naverLoginRedirectUri}",
@@ -49,6 +70,15 @@
                 height: 60
             }
         }).init();
+
+        // Facebook JavaScript SDK Initialization
+        FB.login(response => {
+            console.log(response);
+        });
+
+        // reCAPTCHA Initialization
+        const init = () => alert("reCAPTCHA is Initialized!");
+
     </script>
 </body>
 </html>

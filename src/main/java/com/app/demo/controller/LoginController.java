@@ -30,6 +30,12 @@ public class LoginController {
         return "redirect:/";
     }
 
+    @GetMapping("/facebook")
+    public String facebookLoginAction(Object object) {
+        this.currentLoginState = "facebook";
+        return "redirect:/";
+    }
+
     @PostMapping("/set_access_token")
     @ResponseBody
     public void setAccessToken(@RequestParam("hash_str") final String hashStr) {
@@ -45,6 +51,6 @@ public class LoginController {
 
         System.out.println("kakaoAccessToken: " + this.kakaoAccessToken);
         System.out.println("googleAccessToken: " + this.googleAccessToken);
-        System.out.println("naverAccessToken: " + this.naverAccessToken    );
+        System.out.println("naverAccessToken: " + this.naverAccessToken);
     }
 }
