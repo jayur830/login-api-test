@@ -11,13 +11,15 @@
 </head>
 <body>
     <h1>Hello!</h1>
-    <a href="<c:url value="/login" />">
+    <a id="login-btn" href="<c:url value="/login" />">
         login
     </a>
     <script>
         if (location.hash !== "")
-            $.post("/login_action/set_access_token", { hash_str: location.hash })
-                .done(() => location.replace("/"));
+            $.post("/login_action/set_access_token", {hash_str: location.hash})
+                .done(data => location.replace("/"));
+        setInterval(() =>
+            $.post(), 1000);
     </script>
 </body>
 </html>
